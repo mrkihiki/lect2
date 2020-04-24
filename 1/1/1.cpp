@@ -8,6 +8,11 @@ void Towers(int n, char A, char C, char B)
 //переложить N колец с А на С, используя В как промежуточный
 {
 	if (n == 1) cout << A << "->" << C << endl;
+	else if (n == 2) {
+		Towers(1, A, B, C);
+		Towers(1, A, C, B);
+		Towers(1, B, C, A);
+	}
 	else {
 		Towers(n - 1, A, C, B); // перекладываем n-1 кольцо с А на С
 		Towers(1, A, B, C); // перекладываем 1 кольцо с А на В
@@ -20,6 +25,7 @@ int main()
 	Towers(3, 'A', 'C', 'B'); //решаем задачу при N = 3 
 	return 0;
 }
+
 
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
